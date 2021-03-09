@@ -1,16 +1,16 @@
-void mirror(Node* node) 
+Node* mirrorTree(Node* root)
 {
-     if (node == NULL)  
-        return;  
-    else
-    { 
-        struct Node* temp; 
-          
-        mirror(node->left); 
-        mirror(node->right); 
-
-        temp     = node->left; 
-        node->left = node->right; 
-        node->right = temp; 
-    } 
+    if (root == NULL)
+        return root;
+     
+    Node* temp = root->left;
+    root->left = root->right;
+    root->right = temp;
+ 
+    if (root->left)
+        mirrorTree(root->left);
+    if (root->right)
+        mirrorTree(root->right);
+   
+  return root;
 }
